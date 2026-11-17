@@ -47,11 +47,18 @@ Restart the game after changing settings.
 
 ## Building from source
 
-This repository contains the mod source code. Windows x64 builds are produced by [GitHub Actions](https://github.com/glawks/Pause-Weapon-Wheel/actions), or you can build locally using CMake, Ninja and the [OpenRAC mod SDK](https://github.com/OpenRAC/OpenRAC/tree/sdk-v1.14.2/sdk):
+This repository contains the mod source code. Windows x64 and Linux (x86_64, aarch64) builds are produced by [GitHub Actions](https://github.com/glawks/Pause-Weapon-Wheel/actions), or you can build locally using CMake, Ninja and the [OpenRAC mod SDK](https://github.com/OpenRAC/OpenRAC/tree/sdk-v1.14.2/sdk):
 
 ```powershell
 cmake -S . -B build-win -G Ninja -DCMAKE_BUILD_TYPE=Release -DOpenRACMod_DIR="C:/path/to/OpenRAC/sdk/cmake"
 cmake --build build-win --parallel
+```
+
+On Linux, the same with a C++ compiler (GCC or Clang):
+
+```sh
+cmake -S . -B build-linux -G Ninja -DCMAKE_BUILD_TYPE=Release -DOpenRACMod_DIR="$HOME/path/to/OpenRAC/sdk/cmake"
+cmake --build build-linux --parallel
 ```
 
 If you use a GitHub Actions build, extract the workflow artifact first and install the **mod ZIP inside it**, not the outer artifact ZIP.
